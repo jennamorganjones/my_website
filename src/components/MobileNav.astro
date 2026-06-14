@@ -1,0 +1,60 @@
+---
+const links = [
+  { text: "writing", href: "/writing/" },
+  { text: "photos", href: "/photos/" },
+  { text: "artworks", href: "/artworks/" },
+  { text: "about this website", href: "/colophon/" },
+  { text: "about me", href: "/about/" },
+  { text: "let's connect", href: "/connect/" },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<button
+  id="nav-toggle"
+  class="md:hidden fixed top-6 right-6 z-50 text-nav p-2"
+  aria-label="Toggle menu"
+  aria-expanded="false"
+  aria-controls="nav-drawer"
+>
+  <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
+  </svg>
+  <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+  </svg>
+</button>
+
+<div
+  id="nav-drawer"
+  class="fixed inset-0 bg-white z-40 hidden md:hidden flex-col justify-center items-center space-y-8"
+>
+  {links.map((link) => (
+    <a
+      href={link.href}
+      class:list={[
+        "font-nav text-xl tracking-wide hover:text-accent transition-colors",
+        currentPath.startsWith(link.href) ? "text-accent" : "text-nav",
+      ]}
+    >
+      {link.text}
+    </a>
+  ))}
+</div>
+
+<script>
+  const toggle = document.getElementById("nav-toggle")!;
+  const drawer = document.getElementById("nav-drawer")!;
+  const hamburger = document.getElementById("hamburger-icon")!;
+  const close = document.getElementById("close-icon")!;
+
+  toggle.addEventListener("click", () => {
+    const open = drawer.classList.contains("hidden");
+    drawer.classList.toggle("hidden", !open);
+    drawer.classList.toggle("flex", open);
+    hamburger.classList.toggle("hidden", open);
+    close.classList.toggle("hidden", !open);
+    toggle.setAttribute("aria-expanded", String(open));
+  });
+</script>

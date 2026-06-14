@@ -1,0 +1,25 @@
+---
+const links = [
+  { text: "writing", href: "/writing/" },
+  { text: "photos", href: "/photos/" },
+  { text: "artworks", href: "/artworks/" },
+  { text: "about this website", href: "/colophon/" },
+  { text: "about me", href: "/about/" },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav class="hidden md:flex justify-between items-center px-8 py-6 border-b border-gray-100">
+  {links.map((link) => (
+    <a
+      href={link.href}
+      class:list={[
+        "font-nav text-sm tracking-wide hover:text-accent transition-colors",
+        currentPath.startsWith(link.href) ? "text-accent" : "text-nav",
+      ]}
+    >
+      {link.text}
+    </a>
+  ))}
+</nav>

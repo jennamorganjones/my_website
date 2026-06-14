@@ -1,0 +1,22 @@
+---
+import ProseLayout from "@/layouts/ProseLayout.astro";
+---
+
+<ProseLayout title="About This Website">
+  <h1 class="font-display text-3xl mb-8">About This Website</h1>
+  <div class="space-y-4 leading-relaxed">
+    <p>
+      This site is built with <a href="https://astro.build" class="text-accent hover:underline">Astro</a>
+      and <a href="https://tailwindcss.com" class="text-accent hover:underline">Tailwind CSS</a>.
+      It is statically generated and hosted on GitHub Pages.
+    </p>
+    <p>
+      The design prioritises simplicity — letting the work speak for itself against
+      clean white space. No JavaScript frameworks, no tracking, no cookies.
+    </p>
+    <p>
+      Typography uses custom fonts loaded via @font-face with font-display: swap
+      for optimal performance.
+    </p>
+  </div>
+</ProseLayout>

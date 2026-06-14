@@ -1,0 +1,9 @@
+---
+import GalleryLayout from "@/layouts/GalleryLayout.astro";
+import ImageScroll from "@/components/ImageScroll.astro";
+import artworks from "@/content/artworks/artworks.json";
+---
+
+<GalleryLayout title="Artworks" description="Original paintings, illustrations, and mixed media.">
+  <ImageScroll images={artworks} />
+</GalleryLayout>

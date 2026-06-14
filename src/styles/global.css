@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Replace these with your own .woff2 font files in public/fonts/ */
+@font-face {
+  font-family: "Display";
+  src: url("/fonts/display.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Body";
+  src: url("/fonts/body.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nav";
+  src: url("/fonts/body.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+:root {
+  --font-display: "Display";
+  --font-body: "Body";
+  --font-nav: "Nav";
+  --color-bg: #ffffff;
+  --color-text: #1a1a1a;
+  --color-accent: #6ece98;
+  --color-nav: #333333;
+}
+
+body {
+  color: var(--color-text);
+  background: var(--color-bg);
+}

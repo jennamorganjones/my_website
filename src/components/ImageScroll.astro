@@ -1,0 +1,28 @@
+---
+interface ImageItem {
+  src: string;
+  alt: string;
+  width?: number;
+  height?: number;
+}
+
+interface Props {
+  images: ImageItem[];
+}
+
+const { images } = Astro.props;
+---
+
+{images.map((img) => (
+  <figure>
+    <img
+      src={img.src}
+      alt={img.alt}
+      width={img.width}
+      height={img.height}
+      class="w-full h-auto"
+      loading="lazy"
+      decoding="async"
+    />
+  </figure>
+))}

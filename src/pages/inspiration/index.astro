@@ -1,0 +1,46 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import NavBar from "@/components/NavBar.astro";
+import MobileNav from "@/components/MobileNav.astro";
+
+const boards = [
+  { text: "oil on the spoon", href: "/inspiration/oil-on-the-spoon/", x: "12%", y: "30%" },
+  { text: "readings", href: "/inspiration/readings/", x: "70%", y: "25%" },
+  { text: "playlists", href: "/inspiration/playlists/", x: "65%", y: "75%" },
+];
+---
+
+<BaseLayout title="Inspiration" description="A collection of boards from Are.na.">
+  <NavBar />
+  <MobileNav />
+  <section class="relative w-full h-[calc(100vh-73px)] overflow-hidden">
+    <!-- Background image -->
+    <img
+      src="/images/inspiration-bg.jpg"
+      alt=""
+      class="absolute inset-0 w-full h-full object-cover"
+      fetchpriority="high"
+      decoding="async"
+    />
+
+    <!-- Center text -->
+    <div class="absolute inset-0 flex items-center justify-center px-8">
+      <p class="max-w-md text-center font-body text-base text-white leading-relaxed">
+        I collect things on <a href="https://www.are.na/jenna-morgan" class="underline hover:text-accent" target="_blank" rel="noopener">Are.na</a> — 
+        images, words, links, sounds. It's how I think out loud. 
+        These boards are some of the things I keep returning to.
+      </p>
+    </div>
+
+    <!-- Scattered board links -->
+    {boards.map((board) => (
+      <a
+        href={board.href}
+        class="absolute font-display text-lg md:text-xl p-3 text-white hover:opacity-70 transition-opacity"
+        style={`left:${board.x}; top:${board.y}`}
+      >
+        {board.text}
+      </a>
+    ))}
+  </section>
+</BaseLayout>

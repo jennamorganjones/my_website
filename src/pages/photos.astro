@@ -1,9 +1,9 @@
 ---
 import GalleryLayout from "@/layouts/GalleryLayout.astro";
-import ImageScroll from "@/components/ImageScroll.astro";
-import photos from "@/content/photos/photos.json";
+import PhotoGrid from "@/components/PhotoGrid.astro";
+import photos from "../content/photos/photos.json";
 ---
 
 <GalleryLayout title="Photos" description="Landscape, portrait, and street photography.">
-  <ImageScroll images={photos} />
+  <PhotoGrid rows={photos} />
 </GalleryLayout>

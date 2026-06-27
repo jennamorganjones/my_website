@@ -1,11 +1,32 @@
 [
-  { "layout": "pair", "images": [
-    { "src": "/images/photos/photo-01.jpg", "alt": "Landscape photograph" },
-    { "src": "/images/photos/photo-02.jpg", "alt": "Portrait photograph" }
-  ]},
-  { "layout": "full", "image": { "src": "/images/photos/photo-03.jpg", "alt": "Street photograph" } },
-  { "layout": "pair", "images": [
-    { "src": "/images/photos/photo-04.jpg", "alt": "Photo four" },
-    { "src": "/images/photos/photo-05.jpg", "alt": "Photo five" }
-  ]}
+  {
+    "columns": 1,
+    "images": [
+      { "src": "/images/photos/bush_cederberg.jpeg", "alt": "Bush in Cederberg" }
+    ]
+  },
+    {
+    "columns": 1,
+    "images": [
+      { "src": "/images/photos/cairo_streets.jpg", "alt": "Bush in Cederberg" }
+    ]
+  },
+    {
+    "columns": 1,
+    "images": [
+      { "src": "/images/photos/river_cedarberg.jpeg", "alt": "Bush in Cederberg" }
+    ]
+  },
+    {
+    "columns": 1,
+    "images": [
+      { "src": "/images/photos/bush_cederberg.jpeg", "alt": "Bush in Cederberg" }
+    ]
+  },
+  {
+    "columns": 1,
+    "images": [
+      { "src": "/images/photos/tourists_pyramid.jpeg", "alt": "Cairo streets" }
+    ]
+  }
 ]

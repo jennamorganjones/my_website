@@ -1,21 +1,21 @@
 ---
 const links = [
-  { text: "writing", href: "/writing/", x: "10%", y: "45%" },
-  { text: "photos", href: "/photos/", x: "15%", y: "78%" },
-  { text: "artwork", href: "/artworks/", x: "48%", y: "70%" },
-  { text: "inspiration", href: "/inspiration/", x: "35%", y: "20%" },
-  { text: "about this website", href: "/colophon/", x: "58%", y: "48%" },
-  { text: "meee", href: "/about/", x: "72%", y: "88%" },
-  { text: "let's connect", href: "/connect/", x: "72%", y: "15%" },
+  { text: "writing", href: "/writing/", desktop: { x: "10%", y: "45%" }, mobile: { x: "8%", y: "35%" } },
+  { text: "photos", href: "/photos/", desktop: { x: "15%", y: "78%" }, mobile: { x: "12%", y: "72%" } },
+  { text: "artwork", href: "/artworks/", desktop: { x: "48%", y: "70%" }, mobile: { x: "60%", y: "65%" } },
+  { text: "about this website", href: "/colophon/", desktop: { x: "58%", y: "48%" }, mobile: { x: "55%", y: "45%" } },
+  { text: "about me", href: "/about/", desktop: { x: "72%", y: "88%" }, mobile: { x: "70%", y: "82%" } },
+  { text: "inspiration", href: "/inspiration/", desktop: { x: "35%", y: "20%" }, mobile: { x: "40%", y: "18%" } },
+  { text: "let's connect", href: "/connect/", desktop: { x: "72%", y: "15%" }, mobile: { x: "68%", y: "12%" } },
 ];
 ---
 
 <section class="relative w-full h-screen overflow-hidden">
   <!-- Desktop hero -->
   <picture>
-    <source media="(max-width: 768px)" srcset="/images/hero-mobile.jpg" />
+    <source media="(max-width: 768px)" srcset="/images/hero.jpeg" />
     <img
-      src="/images/hero.jpg"
+      src="/images/hero.jpeg"
       alt=""
       class="absolute inset-0 w-full h-full object-cover"
       fetchpriority="high"
@@ -27,10 +27,19 @@ const links = [
   {links.map((link) => (
     <a
       href={link.href}
-      class="absolute font-display text-white text-lg md:text-xl p-3 hover:opacity-70 transition-opacity"
-      style={`left:${link.x}; top:${link.y}`}
+      class="absolute font-display text-white text-sm md:text-lg lg:text-xl p-2 md:p-3 hover:opacity-70 transition-opacity mobile-link"
+      style={`--mobile-x: ${link.mobile.x}; --mobile-y: ${link.mobile.y}; --desktop-x: ${link.desktop.x}; --desktop-y: ${link.desktop.y}; left: ${link.mobile.x}; top: ${link.mobile.y};`}
     >
       {link.text}
     </a>
   ))}
 </section>
+
+<style>
+  @media (min-width: 768px) {
+    .mobile-link {
+      left: var(--desktop-x) !important;
+      top: var(--desktop-y) !important;
+    }
+  }
+</style>

@@ -2,27 +2,29 @@
 interface ImageItem {
   src: string;
   alt: string;
-  width?: number;
-  height?: number;
 }
+
+type Row = { layout: "full"; image: ImageItem } | { layout: "pair"; images: [ImageItem, ImageItem] };
 
 interface Props {
-  images: ImageItem[];
+  rows: Row[];
 }
 
-const { images } = Astro.props;
+const { rows } = Astro.props;
 ---
 
-{images.map((img) => (
-  <figure>
-    <img
-      src={img.src}
-      alt={img.alt}
-      width={img.width}
-      height={img.height}
-      class="w-full h-auto"
-      loading="lazy"
-      decoding="async"
-    />
-  </figure>
-))}
+{rows.map((row) =>
+  row.layout === "pair" ? (
+    <div class="grid grid-cols-2 gap-2">
+      {row.images.map((img) => (
+        <figure>
+          <img src={img.src} alt={img.alt} class="w-full h-auto" loading="lazy" decoding="async" />
+        </figure>
+      ))}
+    </div>
+  ) : (
+    <figure>
+      <img src={row.image.src} alt={row.image.alt} class="w-full h-auto" loading="lazy" decoding="async" />
+    </figure>
+  )
+)}
